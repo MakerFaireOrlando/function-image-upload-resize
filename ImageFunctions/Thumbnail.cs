@@ -101,7 +101,8 @@ namespace ImageFunctions
                             var divisor = image.Width / thumbnailWidth;
                             var height = Convert.ToInt32(Math.Round((decimal)(image.Height / divisor)));
 
-                            image.Mutate(x => x.Resize(thumbnailWidth, height));
+                            // image.Mutate(x => x.Resize(thumbnailWidth, height));
+                            image.Mutate(x => x.Resize(thumbnailWidth, thumbnailWidth));
                             image.Save(output, encoder);
                             output.Position = 0;
                             await blockBlob.UploadFromStreamAsync(output);
